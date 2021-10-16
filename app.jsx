@@ -38,12 +38,36 @@ class Clock extends React.Component {
 	}
 }
 
+class Counter extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {count: 0};
+		
+		this.click = this.click.bind(this);
+	}
+	
+	click() {
+		this.setState(prevState => ({
+			count: prevState.count + 1
+		}));
+	}
+	
+	render() {
+		return(
+			<div onClick={this.click}>
+				You have clicked {this.state.count} times
+			</div>
+		);
+	}
+}
+
 class App extends React.Component {
 	render() {
 		return (
 			<div>
 				<Greet name="Wael"/>
 				<Clock />
+				<Counter />
 			</div>
 		);
 	}
